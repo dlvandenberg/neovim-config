@@ -20,7 +20,7 @@ return {
             },
             sort_by = 'case_sensitive',
         })
-        
+
         -- set keymaps
         local keymap = vim.keymap
 
