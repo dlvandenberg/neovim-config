@@ -33,7 +33,7 @@ return {
                 "eslint",
             },
             -- auto install configured servers
-            automatic_instalation = true,
+            automatic_installation = true,
 
             handlers = {
                 lsp_zero.default_setup,

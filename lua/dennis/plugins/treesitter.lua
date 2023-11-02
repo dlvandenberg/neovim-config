@@ -1,6 +1,7 @@
 return {
     'nvim-treesitter/nvim-treesitter',
     build = ":TSUpdate",
+    event = { "BufRead", "BufNewFile" },
     dependencies = {
         {'nvim-treesitter/nvim-treesitter-textobjects'},
     },
@@ -8,8 +9,22 @@ return {
         local configs = require("nvim-treesitter.configs")
 
         configs.setup({
-            -- A list of parser names, or "all" (the five listed parsers should always be installed)
-            ensure_installed = { "tsx", "javascript", "typescript", "c", "lua", "vim", "vimdoc", "query", "html" },
+            ensure_installed = {
+                "tsx",
+                "javascript",
+                "typescript",
+                "c",
+                "lua",
+                "vim",
+                "vimdoc",
+                "query",
+                "html",
+                "svelte",
+                "graphql",
+                "bash",
+                "gitignore",
+                "dockerfile",
+            },
 
             -- Install parsers synchronously (only applied to `ensure_installed`)
             sync_install = false,
@@ -27,6 +42,20 @@ return {
                 -- Instead of true it can also be a list of languages
                 additional_vim_regex_highlighting = false,
             },
+
+            ident = { enable = true },
+
+            incremental_selection = {
+                enable = true,
+                keymaps = {
+                    init_selection = "<C-s>",
+                    node_incremental = "<C-s>",
+                    scope_incremental = false,
+                    node_decremental = "<C-S>",
+                },
+            },
+
+
         })
     end
 }
