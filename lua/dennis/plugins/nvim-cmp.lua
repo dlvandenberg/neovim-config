@@ -19,7 +19,7 @@ return {
 
     cmp.setup({
       completion = {
-        completeopt = "menu,menuone,preview,noselect",
+        completeopt = "menu,menuone,preview,noselect,noinsert",
       },
       snippet = { -- configure how nvim-cmp interacts with snippet engine
         expand = function(args)
@@ -34,15 +34,15 @@ return {
         ["<C-f>"] = cmp.mapping.scroll_docs(4), -- scroll preview forwards
         ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
         ["<C-e>"] = cmp.mapping.abort(), -- close completion window
-        ["<CR>"] = cmp.mapping.confirm({ select = true }), -- confirm selection
+        ["<CR>"] = cmp.mapping.confirm({ select = false }), -- confirm selection
       }),
       -- sources for autocompletion
       sources = cmp.config.sources({ -- order of the sources will determine priorities
         -- { name = 'luasnip' }, -- snippets
         { name = "nvim_lsp" }, -- lsp suggestions
+        { name = "path" }, -- file system paths
         { name = "buffer" }, -- text within current buffer
         { name = "nvim_lua" },
-        { name = "path" }, -- file system paths
       }),
     })
   end,
